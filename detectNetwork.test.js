@@ -7,6 +7,22 @@
 // other places in this file where you'll replace the FILL_ME_IN with a
 // different value.
 var FILL_ME_IN = 'Fill this value in';
+
+function genTestCase(prefix, length) {
+  prefix = prefix.toString()
+  return prefix.concat(Array(length + 1 - prefix.length).join('1'))
+}
+
+function runTestCases(prefixes, lengths, network) {
+  for(var prefix of prefixes) {
+    for(var length of lengths) {
+      var testCase = genTestCase(prefix, length);
+      it('has a prefix of ' + prefix.toString() + ' and a length of ' + length + '', () => {;
+        detectNetwork(testCase).should.equal(network);
+      });
+    }
+  }
+}
  
 describe('Introduction to Mocha Tests - READ ME FIRST', function() {
   // A Mocha test is just a function!
@@ -140,10 +156,15 @@ describe('MasterCard', function() {
 });
 
 describe('Discover', function() {
+  var should = chai.should();
+
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16');
-  it('has a prefix of 6011 and a length of 19');
+  runTestCases([6011, 644, 645, 646, 647, 648, 649, 65], [16, 19], 'Discover')
+  // it('has a prefix of ' + prefix.toString() + ' and a length of ' + length + '', () => {;
+  //   detectNetwork(testCase).should.equal(network);
+  // });  
+
 });
 
 describe('Maestro', function() {
