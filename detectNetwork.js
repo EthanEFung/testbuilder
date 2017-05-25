@@ -11,13 +11,25 @@ var cardTypes = [
 {
   network: "Diner's Club",
   prefixes: [38, 39],
-  numOfDigits: [14]
+  lengths: [14]
 },
 
 {
   network: "American Express",
   prefixes: [34, 37],
-  numOfDigits: [15]
+  lengths: [15]
+},
+
+{
+  network: "Visa",
+  prefixes: [4],
+  lengths: [13, 16, 19]
+}, 
+
+{
+  network: "MasterCard",
+  prefixes: [51, 52, 53, 54, 55],
+  lengths: [16]
 }
 
 ];
@@ -29,7 +41,7 @@ var detectNetwork = function(cardNumber) {
       return prefix === cardNumber.slice(0, prefix.length);
     });
 
-    var lengthMatches = card.numOfDigits.some((numOfDigits) => numOfDigits === cardNumber.length);
+    var lengthMatches = card.lengths.some((numOfDigits) => numOfDigits === cardNumber.length);
 
     return prefixMatches && lengthMatches ? card.network : validCard;
   }, "Invalid Card");
