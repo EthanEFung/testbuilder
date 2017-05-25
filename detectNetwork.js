@@ -30,6 +30,18 @@ var cardTypes = [
   network: "MasterCard",
   prefixes: [51, 52, 53, 54, 55],
   lengths: [16]
+},
+
+{
+  network: "Discover",
+  prefixes: [6011, 644, 645, 646, 647, 648, 649, 65],
+  lengths: [16, 19]
+},
+
+{
+  network: "Maestro",
+  prefixes: [5018, 5020, 5038, 6304],
+  lengths: [12, 13, 14, 15, 16, 17, 18, 19]
 }
 
 ];
