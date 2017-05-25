@@ -14,10 +14,12 @@ function genTestCase(prefix, length) {
 }
 
 function runTestCases(prefixes, lengths, network) {
+  var should = chai.should();
+
   for(var prefix of prefixes) {
     for(var length of lengths) {
       var testCase = genTestCase(prefix, length);
-      it('has a prefix of ' + prefix.toString() + ' and a length of ' + length + '', () => {;
+      it('has a prefix of ' + prefix.toString() + ' and a length of ' + length + '', () => {
         detectNetwork(testCase).should.equal(network);
       });
     }
@@ -156,7 +158,6 @@ describe('MasterCard', function() {
 });
 
 describe('Discover', function() {
-  var should = chai.should();
 
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
@@ -169,6 +170,8 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
+  // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
+  runTestCases([5018, 5020, 5038, 6304], [12, 13, 14, 15, 16, 17, 18, 19], 'Maestro');
 });
 
 describe('should support China UnionPay')
