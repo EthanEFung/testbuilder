@@ -6,6 +6,15 @@
 // There are two indicators:
 //   1. The first few numbers (called the prefix)
 //   2. The number of digits in the number (called the length)
+function insertRange(start, end) {
+  var range = [];
+  for(start; start <= end; start++) {
+    range.push(start);
+  }
+  return range;
+}
+
+
 var cardTypes = [
 
 {
@@ -42,6 +51,18 @@ var cardTypes = [
   network: "Maestro",
   prefixes: [5018, 5020, 5038, 6304],
   lengths: [12, 13, 14, 15, 16, 17, 18, 19]
+},
+
+{
+  network: "China UnionPay",
+  prefixes: insertRange(622126, 622925).concat([624, 625, 626, 6282, 6283, 6284, 6285, 6286, 6287, 6288]),
+  lengths: [16, 17, 18, 19]
+},
+
+{
+  network: "Switch",
+  prefixes:[4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759],
+  lengths: [16, 18, 19]
 }
 
 ];
